@@ -18,7 +18,7 @@ public class MessageService {
   private AccountRepository acRep;
 
   public Message createMessage(Message m){
-    if(m == null || m.getMessageText().isBlank() || m.getMessageText().length() > 255 || acRep.findById(m.getPostedBy()).isPresent()){
+    if(m == null || m.getMessageText() == null || m.getMessageText().isBlank() || m.getMessageText().length() > 255 || !acRep.findById(m.getPostedBy()).isPresent()){
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
     return meRep.save(m);
