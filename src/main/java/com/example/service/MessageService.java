@@ -39,6 +39,10 @@ public class MessageService {
     return meRep.findAll();
   }
 
+  public List<Message> getAllMessagesByUser(int id){
+    return meRep.findByPostedBy(id);
+  }
+
   public int updateMessage(int id, Message updated){
     Optional<Message> target = meRep.findById(id);
     if(!target.isPresent() || updated == null || updated.getMessageText().isBlank() || updated.getMessageText().length() > 255){
@@ -50,4 +54,5 @@ public class MessageService {
       return 1;
     }
   }
+
 }
