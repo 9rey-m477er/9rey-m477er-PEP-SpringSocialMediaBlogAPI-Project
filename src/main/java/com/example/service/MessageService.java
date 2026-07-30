@@ -23,4 +23,12 @@ public class MessageService {
     }
     return meRep.save(m);
   }
+  public int deleteMessage(int id){
+    if(!meRep.findById(id).isPresent()){
+      return 0;
+    }else{
+      meRep.deleteById(id);
+      return 1;
+    }
+  }
 }

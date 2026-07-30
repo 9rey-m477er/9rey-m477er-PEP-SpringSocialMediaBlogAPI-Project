@@ -3,6 +3,7 @@ package com.example.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -35,5 +36,10 @@ public class SocialMediaController {
   public ResponseEntity<Message> createMessage(@RequestBody Message m){
     Message newMessage = ms.createMessage(m);
     return ResponseEntity.ok(newMessage);
+  }
+  @DeleteMapping("/messages")
+  public ResponseEntity<Integer> deleteMessage(@RequestBody int id){
+    return ResponseEntity.ok(ms.deleteMessage(id));
+
   }
 }
