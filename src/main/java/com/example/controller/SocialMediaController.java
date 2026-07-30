@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.entity.Account;
+import com.example.entity.Message;
 import com.example.service.AccountService;
 import com.example.service.MessageService;
 
@@ -30,4 +31,9 @@ public class SocialMediaController {
     return ResponseEntity.ok(login);
   }
 
+  @PostMapping("/messages")
+  public ResponseEntity<Message> createMessage(@RequestBody Message m){
+    Message newMessage = ms.createMessage(m);
+    return ResponseEntity.ok(newMessage);
+  }
 }
