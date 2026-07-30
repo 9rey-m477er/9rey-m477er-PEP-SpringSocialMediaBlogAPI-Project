@@ -1,9 +1,12 @@
 package com.example.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -52,5 +55,10 @@ public class SocialMediaController {
   public ResponseEntity<Account> register(@RequestBody Account ac){
     Account newAccount = as.addAccount(ac);
     return ResponseEntity.ok(newAccount);
+  }
+
+  @GetMapping("/messages")
+  public ResponseEntity<List<Message>> getAllMessages(){
+    return ResponseEntity.ok(ms.getAllMessages());
   }
 }

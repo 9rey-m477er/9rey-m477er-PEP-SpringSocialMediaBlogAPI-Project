@@ -1,5 +1,7 @@
 package com.example.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -30,5 +32,9 @@ public class MessageService {
       meRep.deleteById(id);
       return 1;
     }
+  }
+
+  public List<Message> getAllMessages(){
+    return meRep.findAll();
   }
 }
