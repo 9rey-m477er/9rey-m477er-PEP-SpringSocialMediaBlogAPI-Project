@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -60,5 +61,10 @@ public class SocialMediaController {
   @GetMapping("/messages")
   public ResponseEntity<List<Message>> getAllMessages(){
     return ResponseEntity.ok(ms.getAllMessages());
+  }
+
+  @PatchMapping("/messages/{message_id}")
+  public ResponseEntity<Integer> updateMessage(@PathVariable("message_id") int id, Message updated){
+    return ResponseEntity.ok(ms.updateMessage(id, updated));
   }
 }

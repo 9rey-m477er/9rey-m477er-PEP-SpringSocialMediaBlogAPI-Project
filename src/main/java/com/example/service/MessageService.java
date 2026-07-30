@@ -1,6 +1,7 @@
 package com.example.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,5 +37,17 @@ public class MessageService {
 
   public List<Message> getAllMessages(){
     return meRep.findAll();
+  }
+
+  public int updateMessage(int id, Message updated){
+    Optional<Message> target = meRep.findById(id);
+    if(!target.isPresent() || updated == null || updated.getMessageText().isBlank() || updated.getMessageText().length() > 255){
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    }else{
+      Message newMessage = target.get();
+      newMessage.setMessageText(updated.getMessageText());
+      meRep.save(newMessage);
+      return 1;
+    }
   }
 }
