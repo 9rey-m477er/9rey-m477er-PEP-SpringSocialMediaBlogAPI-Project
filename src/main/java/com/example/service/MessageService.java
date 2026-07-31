@@ -28,10 +28,11 @@ public class MessageService {
   }
 
   public Message getMessageByID(int id){
-    if(meRep.getById(id) == null){
+    if(meRep.findById(id) == null){
       return null;
     }
-    return meRep.getById(id);
+    Message m = meRep.findById(id).get();
+    return m;
   }
 
   public int deleteMessage(int id){
