@@ -29,7 +29,7 @@ public class MessageService {
 
   public Message getMessageByID(int id){
     if(meRep.findById(id) == null){
-      return null;
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
     Message m = meRep.findById(id).get();
     return m;
