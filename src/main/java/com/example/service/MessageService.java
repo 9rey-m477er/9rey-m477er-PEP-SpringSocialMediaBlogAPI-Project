@@ -28,9 +28,12 @@ public class MessageService {
   }
 
   public Message getMessageByID(int id){
+    if(meRep.getById(id) == null){
+      return null;
+    }
     return meRep.getById(id);
   }
-  
+
   public int deleteMessage(int id){
     if(!meRep.findById(id).isPresent()){
       return 0;

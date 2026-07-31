@@ -75,6 +75,9 @@ public class SocialMediaController {
 
   @GetMapping("/messages/{message_id}")
   public ResponseEntity<Message> getMessageByID(@PathVariable("message_id") int id){
+    if(ms.getMessageByID(id) == null){
+      return ResponseEntity.ok().build();
+    }
     return ResponseEntity.ok(ms.getMessageByID(id));
   }
 }
