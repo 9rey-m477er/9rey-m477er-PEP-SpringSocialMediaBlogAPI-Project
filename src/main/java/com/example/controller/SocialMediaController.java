@@ -72,4 +72,9 @@ public class SocialMediaController {
   public ResponseEntity<List<Message>> getAllMessagesByUser(@PathVariable("account_id") int id){
     return ResponseEntity.ok(ms.getAllMessagesByUser(id));
   }
+
+  @GetMapping("/messages/{message_id}")
+  public ResponseEntity<Message> getMessageByID(@PathVariable("message_id") int id){
+    return ResponseEntity.ok(ms.getMessageByID(id));
+  }
 }
