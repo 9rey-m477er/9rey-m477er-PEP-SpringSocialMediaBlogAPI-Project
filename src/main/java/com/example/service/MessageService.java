@@ -28,7 +28,7 @@ public class MessageService {
   }
 
   public Message getMessageByID(int id){
-    Message m = meRep.findById(id).get();
+    //Message m = meRep.findById(id).get();
 
     return meRep.findById(id).orElse(null);
   }
